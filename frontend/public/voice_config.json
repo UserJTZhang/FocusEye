@@ -1,0 +1,103 @@
+{
+  "model": "cosyvoice-v3-flash",
+  "voices": [
+    {
+      "category": "社交陪伴（标杆音色）",
+      "name": "龙安洋",
+      "voice_parameter": "longanyang",
+      "characteristics": "阳光大男孩",
+      "age": "20~30岁",
+      "language": ["中文（普通话）", "英文"],
+      "ssml_support": true,
+      "instruct_support": true,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251117/khzqvb/%E9%BE%99%E5%AE%89%E6%B4%8B.mp3"
+    },
+    {
+      "category": "社交陪伴（标杆音色）",
+      "name": "龙安欢",
+      "voice_parameter": "longanhuan",
+      "characteristics": "欢脱元气女",
+      "age": "20~30岁",
+      "language": ["中文（普通话）", "英文"],
+      "ssml_support": true,
+      "instruct_support": true,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251117/lolnxw/%E9%BE%99%E5%AE%89%E6%AC%A2.mp3"
+    },
+    {
+      "category": "童声（标杆音色）",
+      "name": "龙呼呼",
+      "voice_parameter": "longhuhu_v3",
+      "characteristics": "天真烂漫女童",
+      "age": "6~10岁",
+      "language": ["中文（普通话）", "英文"],
+      "ssml_support": true,
+      "instruct_support": true,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251117/qxsnvh/%E9%BE%99%E5%91%BC%E5%91%BC.mp3"
+    },
+    {
+      "category": "方言",
+      "name": "龙嘉怡",
+      "voice_parameter": "longjiayi_v3",
+      "characteristics": "知性粤语女",
+      "age": "25~30岁",
+      "language": ["中文（粤语）", "英文"],
+      "ssml_support": true,
+      "instruct_support": false,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260105/dsuxvc/%E9%BE%99%E5%98%89%E6%80%A1.mp3"
+    },
+    {
+      "category": "方言",
+      "name": "龙安粤",
+      "voice_parameter": "longanyue_v3",
+      "characteristics": "欢脱粤语男",
+      "age": "25~35岁",
+      "language": ["中文（粤语）", "英文"],
+      "ssml_support": true,
+      "instruct_support": false,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251117/emleqe/%E9%BE%99%E5%AE%89%E7%B2%A4.mp3"
+    },
+    {
+      "category": "方言",
+      "name": "龙老铁",
+      "voice_parameter": "longlaotie_v3",
+      "characteristics": "东北直率男",
+      "age": "25~30岁",
+      "language": ["中文（东北话）", "英文"],
+      "ssml_support": true,
+      "instruct_support": false,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260105/yuxzau/%E9%BE%99%E8%80%81%E9%93%81.mp3"
+    },
+    {
+      "category": "方言",
+      "name": "龙陕哥",
+      "voice_parameter": "longshange_v3",
+      "characteristics": "原味陕北男",
+      "age": "25~35岁",
+      "language": ["中文（陕西话）", "英文"],
+      "ssml_support": true,
+      "instruct_support": false,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251117/oltkqv/%E9%BE%99%E9%99%95%E5%93%A5.mp3"
+    },
+    {
+      "category": "方言",
+      "name": "龙安闽",
+      "voice_parameter": "longanmin_v3",
+      "characteristics": "清纯萝莉女",
+      "age": "18~25岁",
+      "language": ["中文（闽南话）", "英文"],
+      "ssml_support": true,
+      "instruct_support": false,
+      "timestamp_support": true,
+      "audio_url": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251117/biokep/%E9%BE%99%E5%AE%89%E9%97%BD.mp3"
+    }
+  ],
+  "total_count": 8,
+  "source": "https://help.aliyun.com/zh/model-studio/cosyvoice-voice-list"
+}

@@ -106,4 +106,3 @@ vercel --prod
 ## 📄 License
 
 MIT License
-# FocusEye

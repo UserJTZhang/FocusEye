@@ -1,0 +1,470 @@
+.app-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row; /* 桌面端：左右布局 */
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 视频区域 */
+.video-container {
+  flex: 1; /* 桌面端：占据剩余空间 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  min-width: 0; /* 允许flex压缩 */
+}
+
+/* 桌面端：监督时视频容器保持不变，不需要缩小 */
+
+.video-container video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* 等比例缩放，显示完整内容 */
+  border-radius: 0; /* 桌面端去掉圆角 */
+}
+
+.video-container video.mirror {
+  transform: scaleX(-1);
+}
+
+/* 切换摄像头按钮 */
+.switch-camera-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.switch-camera-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
+
+.switch-camera-btn:active {
+  transform: scale(0.95);
+}
+
+.switch-camera-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+/* 控制面板 */
+.control-panel {
+  flex: 0 0 400px; /* 桌面端：固定宽度400px */
+  padding: 30px 25px;
+  background: #1a1a1a;
+  border-left: 1px solid #333; /* 桌面端：左边框 */
+  overflow-y: auto; /* 允许内容滚动，但不显示横向滚动条 */
+  overflow-x: hidden; /* 禁止横向滚动 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 状态指示灯 */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  flex-shrink: 0; /* 防止被压缩 */
+}
+
+.status-indicator .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.status-idle .dot {
+  background: #666;
+}
+
+.status-focused .dot {
+  background: #4caf50;
+}
+
+.status-distracted .dot {
+  background: #ff9800;
+}
+
+.status-away .dot {
+  background: #f44336;
+}
+
+.status-error .dot {
+  background: #f44336;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 反馈消息 */
+.feedback-message {
+  background: #2a2a2a;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  flex-shrink: 0; /* 防止被压缩 */
+}
+
+.feedback-message p {
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+}
+
+/* 配置选项 */
+.config-section {
+  background: #2a2a2a;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.config-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.config-item label {
+  font-size: 14px;
+  color: #ccc;
+  flex-shrink: 0;
+}
+
+.config-item select {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  background: #1a1a1a;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  outline: none;
+  color-scheme: dark; /* 强制使用深色配色方案 */
+}
+
+.config-item select option {
+  background: #2a2a2a !important;
+  color: #fff !important;
+  padding: 8px;
+}
+
+/* 日间模式 - 选项为白色背景黑色文字 */
+@media (prefers-color-scheme: light) {
+  .config-item select {
+    color-scheme: light;
+  }
+  
+  .config-item select option {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
+
+.config-item select:hover {
+  border-color: #4caf50;
+}
+
+.config-item select:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.config-hint {
+  font-size: 12px;
+  color: #ff9800;
+  margin: 0;
+  text-align: center;
+}
+
+/* 声音预览 */
+.voice-preview {
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: -8px;
+}
+
+.voice-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.voice-lang {
+  font-size: 12px;
+  color: #999;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.language-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+}
+
+.btn-preview {
+  padding: 6px 12px;
+  font-size: 13px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.horn-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.stop-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-preview:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+.btn-preview.btn-stop {
+  background: #c62828;
+}
+
+.btn-preview.btn-stop:hover {
+  background: #b71c1c;
+}
+
+.btn-preview:active {
+  transform: scale(0.95);
+}
+
+/* 按钮组 */
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0; /* 防止被压缩 */
+}
+
+.btn {
+  flex: 1;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-height: 50px; /* 确保按钮足够大，方便移动端点击 */
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #2196f3;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1976d2;
+}
+
+.btn-success {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-success:hover {
+  background: #45a049;
+}
+
+.btn-danger {
+  background: #f44336;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #da190b;
+}
+
+/* 统计信息 */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 桌面端：2列 */
+  gap: 10px;
+  flex-shrink: 0; /* 防止被压缩 */
+}
+
+.stat-item {
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat-item .label {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.stat-item .value {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+/* 加载覆盖层 */
+.loading-overlay {
+  position: fixed; /* 改为fixed，确保覆盖整个视口 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #333;
+  border-top-color: #4caf50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column; /* 移动端：上下布局 */
+  }
+
+  .video-container {
+    flex: 0 0 50vh; /* 移动端视频占50%高度 */
+    min-height: 50vh;
+  }
+
+  .video-container.minimized {
+    flex: 0 0 30vh; /* 监督时缩小到30% */
+    min-height: 30vh;
+  }
+
+  .video-container video {
+    border-radius: 0; /* 移动端也去掉圆角 */
+  }
+
+  .control-panel {
+    flex: 1;
+    border-left: none;
+    border-top: 1px solid #333; /* 移动端：上边框 */
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    font-size: 18px; /* 移动端按钮文字稍大 */
+    padding: 18px;
+    min-height: 56px; /* 增加最小高度，更容易点击 */
+  }
+
+  .feedback-message p {
+    font-size: 16px;
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .video-container {
+    flex: 0 0 45vh; /* 超小屏幕视频占45% */
+    min-height: 45vh;
+  }
+
+  .video-container.minimized {
+    flex: 0 0 25vh;
+    min-height: 25vh;
+  }
+
+  .control-panel {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .status-indicator {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 16px;
+  }
+}

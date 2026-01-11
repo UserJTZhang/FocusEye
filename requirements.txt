@@ -1,0 +1,11 @@
+# Python 核心依赖
+python-dotenv==1.2.1
+pydantic==2.12.5
+
+# LangChain 相关
+langchain==1.2.0
+langchain-openai==1.1.6
+langchain-core==1.2.2
+
+# HTTP 请求
+requests==2.32.5
