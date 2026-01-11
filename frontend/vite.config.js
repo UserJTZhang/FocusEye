@@ -8,13 +8,14 @@ export default defineConfig({
     port: 3000,
     strictPort: false,
     allowedHosts: [
-      '6b8592772b5501.lhr.life',  // 添加您的特定主机
-      '.lhr.life',  // 或允许所有 lhr.life 子域名
-      '.vicp.fun',  // 或允许所有 lhr.life 子域名
-      '37vruv671229.vicp.fun'  // 或允许所有 lhr.life 子域名
+      '6b8592772b5501.lhr.life',
+      '.lhr.life',
+      '.vicp.fun',
+      '37vruv671229.vicp.fun'
     ],
     hmr: {
-      clientPort: 3000
+      // 禁用 WebSocket overlay，避免在隧道环境下的连接失败警告
+      overlay: false
     },
     proxy: {
       '/api': {
