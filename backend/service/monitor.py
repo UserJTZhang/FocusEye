@@ -106,11 +106,10 @@ class MonitorService:
             # 验证配置
             settings.validate()
             
-            # 获取监督配置
+            # 获取监督配置（仅后端控制的配置）
             monitor_interval = int(os.getenv('MONITOR_INTERVAL', 60))
             monitor_interval_random = int(os.getenv('MONITOR_INTERVAL_RANDOM', 10))
-            encouragement_interval = int(os.getenv('ENCOURAGEMENT_INTERVAL', 20))
-            rest_reminder_interval = int(os.getenv('REST_REMINDER_INTERVAL', 3))
+            # 注意：encouragementInterval 和 restReminderInterval 由前端用户自己设置，不从后端返回
             
             return {
                 "success": True,
@@ -121,8 +120,7 @@ class MonitorService:
                     "api_base": settings.API_BASE[:30] + "...",  # 只显示部分 URL
                     "monitorInterval": monitor_interval,  # 监督间隔（秒）
                     "monitorIntervalRandom": monitor_interval_random,  # 随机波动（秒）
-                    "encouragementInterval": encouragement_interval,  # 鼓励间隔（分钟）
-                    "restReminderInterval": rest_reminder_interval  # 休息提醒间隔（分钟）
+                    # encouragementInterval 和 restReminderInterval 由前端管理，不在此返回
                 }
             }
         except Exception as e:

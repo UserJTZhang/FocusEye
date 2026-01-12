@@ -172,7 +172,8 @@ def analyze_focus(
         import os
         from dotenv import load_dotenv
         load_dotenv()
-        encouragement_interval = int(os.getenv('ENCOURAGEMENT_INTERVAL', 20))
+        encouragement_interval = int(stats.get('encouragementInterval',os.getenv('ENCOURAGEMENT_INTERVAL', 20)))
+        # encouragement_interval = int(os.getenv('ENCOURAGEMENT_INTERVAL', 20))
         stats['encouragementInterval'] = encouragement_interval
     
     agent = get_supervisor_agent()
